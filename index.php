@@ -35,7 +35,7 @@
                <th>Waktu</th>
             </tr>
             <?php
-               $sql = mysqli_query($koneksi, "SELECT * FROM curah_hujan ORDER BY id DESC");
+               $sql = mysqli_query($koneksi, "SELECT * FROM curah_hujan ORDER BY id ASC");
                
                if(mysqli_num_rows($sql) == 0){ 
                echo '<tr><td colspan="14">Data Tidak Ada.</td></tr>'; // jika tidak ada entri di database maka tampilkan 'Data Tidak Ada.'
@@ -70,16 +70,10 @@
    <script type="text/javascript"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
    <script>
-      $.ajax({
-        type: "method",
-        url: "url",
-        // data: "data",
-        dataType: "json",
-        success: function (response) {
-      //     var curah = 1;
-      // console.log(curah);
-      // var xValues = <?= $waktuu ?>;
-      // var yValues = <?= $hujan ?>;
+      var curah = 1;
+      console.log(curah);
+      var xValues = <?= $waktuu ?>;
+      var yValues = <?= $hujan ?>;
       new Chart("myChart", {
         type: "line",
         data: {
@@ -97,8 +91,6 @@
           scales: {
             yAxes: [{ticks: {min:0, max:20}}]
           }
-        }
-      });
         }
       });
    </script>
